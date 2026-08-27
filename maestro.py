@@ -9,7 +9,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # ===================== КОНФИГ =====================
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-ADMIN_ID = 8644962527
+ADMIN_ID = os.getenv("ADMIN_ID")
 SUPPORT_CHAT_LINK = "https://t.me/maestrosuport"
 PREMIUM_PRICE_USD = 200
 
