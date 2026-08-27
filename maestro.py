@@ -8,7 +8,7 @@ from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # ===================== КОНФИГ =====================
-TOKEN = "8829339666:AAGzC7RJhwgqMbAC50X4IapojM7QyIwY4nM"
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 ADMIN_ID = 8644962527
 SUPPORT_CHAT_LINK = "https://t.me/maestrosuport"
 PREMIUM_PRICE_USD = 200
