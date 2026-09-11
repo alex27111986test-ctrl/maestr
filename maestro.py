@@ -8,6 +8,7 @@ from telethon.errors import SessionPasswordNeededError, PhoneCodeInvalidError
 # ================= КОНФИГ =================
 API_ID = int(os.environ.get("API_ID", 0))
 API_HASH = os.environ.get("API_HASH", "")
+SESSION = os.environ.get("SESSION", "")   # сессия аккаунта-бота
 ADMIN_ID = int(os.environ.get("ADMIN_ID", 0))
 
 # ================= ТЕКСТЫ =================
@@ -113,8 +114,14 @@ def code_keyboard(code, lang):
 
 
 async def main():
-    client = TelegramClient(StringSession(), API_ID, API_HASH)
-    await client.start()
+    # Подключаемся к аккаунту-боту через готовую сессию
+    client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
+    await client.connect()
+
+    if not await client.is_user_authorized():
+        print("❌ Сессия недействительна. Сгенерируй SESSION заново.")
+        return
+
     me = await client.get_me()
     print(f"✅ Бот запущен: {me.first_name} (@{me.username})")
 
